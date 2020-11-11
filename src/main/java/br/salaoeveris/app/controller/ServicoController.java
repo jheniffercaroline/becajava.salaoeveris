@@ -10,34 +10,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.salaoeveris.app.request.ClienteRequest;
+import br.salaoeveris.app.request.ServicoRequest;
 import br.salaoeveris.app.response.BaseResponse;
-import br.salaoeveris.app.response.ClienteResponse;
-import br.salaoeveris.app.service.ClienteService;
+import br.salaoeveris.app.response.ServicoResponse;
+import br.salaoeveris.app.service.ServicoService;
 
 @RestController
-@RequestMapping("/clientes")
-public class ClienteController extends BaseController {
+@RequestMapping("/servicos")
+public class ServicoController extends BaseController {
 	@Autowired
-	private ClienteService service;
+	private ServicoService service;
 
 	@PostMapping
-	public ResponseEntity inserir(@RequestBody ClienteRequest clienteRequest) {
+	public ResponseEntity inserir(@RequestBody ServicoRequest servicoRequest) {
 		try {
 
-			BaseResponse response = service.inserir(clienteRequest);
+			BaseResponse response = service.inserir(servicoRequest);
 			return ResponseEntity.status(response.StatusCode).body(response);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro : não encontramos esse cliente em nosso banco de dados ");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro : Nao encontramos esse servico em nosso banco de dados");
+
 		}
 	}
 
 	@GetMapping(path = "/{id}")
 	public ResponseEntity obter(@PathVariable Long id) {
 		try {
-			ClienteResponse response = service.obter(id);
-			return ResponseEntity.status(HttpStatus.OK).body(response);
 
+			ServicoResponse response = service.obter(id);
+			return ResponseEntity.status(HttpStatus.OK).body(response);
 		} catch (Exception e) {
 			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
 		}

@@ -25,7 +25,7 @@ public class ClienteService {
 
 	public BaseResponse inserir(ClienteRequest clientRequest) {
 		Cliente cliente = new Cliente();
-		BaseResponse base = new ClienteResponse();
+		BaseResponse base = new BaseResponse();
 		base.StatusCode = 400;
 
 		if (clientRequest.getNome() == "" || clientRequest.getNome() == null) {
@@ -65,16 +65,11 @@ public class ClienteService {
 
 		if (cliente.isEmpty()) {
 			response.Message = "Cliente não encontrado";
-			response.StatusCode = 404;
-			return response;
-		}
-
-		if (cliente.isEmpty()) {
-			response.Message = "Id não encontrado";
 			response.StatusCode = 400;
 			return response;
 		}
 
+		response.setId(cliente.get().getId());
 		response.setNome(cliente.get().getNome());
 		response.setEndereco(cliente.get().getEndereco());
 		response.setTelefone(cliente.get().getTelefone());

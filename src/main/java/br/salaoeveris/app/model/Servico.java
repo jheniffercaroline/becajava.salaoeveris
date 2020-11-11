@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Servico {
+public class Servico  {
 
 	private String nome;
 	private double valor;

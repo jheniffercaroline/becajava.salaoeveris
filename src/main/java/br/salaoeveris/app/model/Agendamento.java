@@ -1,5 +1,7 @@
 package br.salaoeveris.app.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Agendamento {
 
-	private String dataHora;
+	private LocalDateTime dataHora;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +25,14 @@ public class Agendamento {
 	@ManyToOne
 	@JoinColumn(name = "servicoId")
 	private Servico Servico;
+	
+	
 
-	public String getDataHora() {
+	public LocalDateTime getDataHora() {
 		return dataHora;
 	}
 
-	public void setDataHora(String dataHora) {
+	public void setDataHora(LocalDateTime dataHora) {
 		this.dataHora = dataHora;
 	}
 

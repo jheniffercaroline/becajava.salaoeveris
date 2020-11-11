@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import br.salaoeveris.app.model.Cliente;
 import br.salaoeveris.app.model.Servico;
 import br.salaoeveris.app.repository.ServicoRepository;
 import br.salaoeveris.app.request.ServicoRequest;
 import br.salaoeveris.app.response.BaseResponse;
-import br.salaoeveris.app.response.ClienteResponse;
 import br.salaoeveris.app.response.ListServicoResponse;
 import br.salaoeveris.app.response.ServicoResponse;
 
+@Service
 public class ServicoService {
 
 	final ServicoRepository _repository;
@@ -85,7 +85,6 @@ public class ServicoService {
 			listServicoResponse.setId(servico.getId());
 			listServicoResponse.setNome(servico.getNome());
 			listServicoResponse.setValor(servico.getValor());
-			
 
 			servicoResponse.add(listServicoResponse);
 
